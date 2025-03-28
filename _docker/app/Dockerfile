@@ -14,4 +14,4 @@ COPY . ./
 
 EXPOSE 5173 5177
 
-CMD ["sh", "-c", "npm run build && npm run dev"]
+#CMD ["sh", "-c", "npm run build && npm run dev"]
