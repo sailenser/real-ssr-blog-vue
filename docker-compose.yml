@@ -14,7 +14,7 @@ services:
       - vue-ssr-network
 
 networks:
-  vue-ssr:
+  vue-ssr-network:
     name: vue-ssr-network
     driver: bridge
     external: true
