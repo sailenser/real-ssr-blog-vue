@@ -11,7 +11,6 @@ export default defineConfig({
     host: true,
     allowedHosts: ["blog-srr.fronterbest.ru"],
   },
-  assetsInclude: ["**/*.html"],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
