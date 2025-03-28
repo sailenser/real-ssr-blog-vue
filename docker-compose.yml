@@ -11,10 +11,10 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     networks:
-      - vue-ssr
+      - vue-ssr-network
 
 networks:
   vue-ssr:
-    name: vue-ssr
+    name: vue-ssr-network
     driver: bridge
     external: true
