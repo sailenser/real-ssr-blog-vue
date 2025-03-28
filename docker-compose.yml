@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: _docker/app/Dockerfile
+    container_name: app-vue3-ssr
+    ports:
+      - "5173:5173" # Vite (Frontend)
+      - "5177:5177" # Express (Backend)
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
