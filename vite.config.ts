@@ -7,9 +7,7 @@ export default defineConfig({
     vue(),
   ],
   server: {
-    port: 5173,
-    host: true,
-    allowedHosts: ["blog-srr.fronterbest.ru"],
+    port: 5177,
   },
   assetsInclude: ["**/*.html"],
   resolve: {
