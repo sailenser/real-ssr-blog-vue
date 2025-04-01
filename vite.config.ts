@@ -8,6 +8,8 @@ export default defineConfig({
   ],
   server: {
     port: 5177,
+    host: true,
+    allowedHosts: ["blog-srr.fronterbest.ru"],
   },
   assetsInclude: ["**/*.html"],
   resolve: {
