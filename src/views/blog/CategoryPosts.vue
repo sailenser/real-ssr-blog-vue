@@ -24,7 +24,6 @@
   </div>
 </template>
 
-
 <script setup>
   import useApi from '@/composables/useApi'
   import useStore from '@/composables/useStore'
@@ -35,17 +34,22 @@
 
   const api = useApi();
 
+  // Общая функция для загрузки
+  const loadPosts = async (urlParam) => {
+    const categoryId = sampleStore.getCategoryIdByUrl(urlParam);
+    await getCategoryPosts(categoryId);
+  };
+
   const { valid, result } = useRouteString('categoryUrl');
+  const [ authStore, sampleStore ] = useStore('auth', 'sample');
   const [ request, getCategoryPosts ] = useApiRequest('posts.categoryPosts');
 
-  const [ authStore, sampleStore ] = useStore('auth', 'sample');
+  // Первоначальная загрузка
+  await loadPosts(result.value);
 
-  const categoryId = sampleStore.getCategoryIdByUrl(result.value);
-
-  await getCategoryPosts(categoryId);
+  // При смене категории
   onBeforeRouteUpdate(async (to, from, next) => {
-    const categoryIdUP = sampleStore.getCategoryIdByUrl(to.params.categoryUrl);
-    await getCategoryPosts(categoryIdUP);
+    await loadPosts(to.params.categoryUrl);
     next();
   });
 </script>
