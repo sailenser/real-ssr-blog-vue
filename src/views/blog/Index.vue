@@ -1,10 +1,6 @@
 <template>
   <div>
     <h1>Posts</h1>
-    <pre>
-      <CategoryTree :treeData="categoryTree" />
-    </pre>
-
     <div
         v-if="request.success"
         class="page-posts"
@@ -33,26 +29,11 @@
   import useStore from '@/composables/useStore'
   import useApiRequest from '@/composables/useApiRequest'
   import usePageInfo from '@/composables/usePageInfo';
-  import CategoryTree from '@/components/category-tree/CategoryTree.vue'
 
   const api = useApi();
   const [ request, getAllPosts ] = useApiRequest('posts.all');
-  const [ authStore, sampleStore ] = useStore('auth', 'sample');
+  const [ authStore ] = useStore('auth', 'sample');
 
   usePageInfo('Блог');
   await getAllPosts();
-
-  //Функция для построения дерева категорий
-  const buildTree = (items, parentId = null) => {
-    // console.log("items", items);
-
-    return items
-        .filter(item => item.parent_id === parentId)
-        .map(item => ({
-          ...item,
-          children: buildTree(items, item.id)
-        }));
-  };
-
-  const categoryTree = computed(() => buildTree(sampleStore.category));
 </script>

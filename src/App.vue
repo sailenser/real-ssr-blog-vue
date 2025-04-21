@@ -15,6 +15,11 @@
     </nav>
   </header>
   <main>
+    <div>
+      <pre>
+        <CategoryTree :treeData="categoryTree" />
+      </pre>
+    </div>
     <RouterView v-slot="{ Component, route }">
       <Transition name="app-fade" mode="out-in">
         <div v-if="Component" :key="route.matched[0].name">
@@ -31,11 +36,27 @@
 </template>
 <script setup>
 import useStore from '@/composables/useStore';
+import CategoryTree from '@/components/category-tree/CategoryTree.vue'
+import {computed} from "vue";
 
-const [ authStore ] = useStore('auth', 'sample');
+const [ authStore, sampleStore ] = useStore('auth', 'sample');
 
 function tryLogout(){
   localStorage.removeItem('AUTH_TOKEN');
   document.location = '/';
 }
+
+//Функция для построения дерева категорий
+const buildTree = (items, parentId = null) => {
+  // console.log("items", items);
+
+  return items
+      .filter(item => item.parent_id === parentId)
+      .map(item => ({
+        ...item,
+        children: buildTree(items, item.id)
+      }));
+};
+
+const categoryTree = computed(() => buildTree(sampleStore.category));
 </script>
