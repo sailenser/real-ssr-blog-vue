@@ -49,7 +49,6 @@ export default function useApiRequest<T = any>(
                     apiCache[cacheKey] = data;
                 }
             } catch (e) {
-                console.error(e);
                 result.value = { pending: false, done: true, success: false, data: null, error: e };
             }
         }

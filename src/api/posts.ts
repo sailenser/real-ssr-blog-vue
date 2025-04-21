@@ -1,5 +1,5 @@
 import type { AxiosInstance } from "axios";
-import type {CategoryPost, Post, PostsApi} from "./typesApi/typesPost.ts"
+import type { CategoryPost, Post, PostsApi } from "./typesApi/typesPost.ts"
 import type { ApiResponse } from "./typesApi/types.ts"
 
 export default function createPostsApi(http: AxiosInstance): PostsApi {
@@ -26,6 +26,10 @@ export default function createPostsApi(http: AxiosInstance): PostsApi {
         },
         async category() {
             const response: ApiResponse<CategoryPost[]> = await http.get('/category');
+            return response.data;
+        },
+        async categoryPosts(id) {
+            const response: ApiResponse<Post[]> = await http.get(`/category/${id}`);
             return response.data;
         },
     };

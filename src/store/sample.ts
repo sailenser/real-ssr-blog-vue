@@ -20,6 +20,12 @@ export default function createSampleStore(postsApi: CategoryPostsApi) {
                 const { data }: ApiResponse<CategoryPost[]> = await postsApi.category();
                 this.category = data;
             }
-        }
+        },
+        getters: {
+            getCategoryIdByUrl: (state) => (url:string) => {
+                const category = state.category.find((cat) => cat.url === url);
+                return category?.id || null;
+            },
+        },
     });
 }

@@ -15,6 +15,7 @@ export type Post = {
 export type CategoryPost = {
     id: number;
     name: string;
+    url: string;
     parent_id: number | null;
     is_visible: number;
     createdAt: string;
@@ -33,6 +34,7 @@ export interface PostsApi {
     update(post: Post):Promise<Post>;
     remove(id: number):Promise<Post>;
     category():Promise<CategoryPost[]>;
+    categoryPosts(id: number):Promise<Post[]>;
 }
 
 export interface CategoryPostsApi {

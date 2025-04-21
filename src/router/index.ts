@@ -5,6 +5,7 @@ import HomePage from './../views/Home.vue';
 import About from './../views/About.vue';
 import Blog from './../views/blog/Index.vue';
 import PostsShowPage from '@/views/blog/Post.vue';
+import CategoryPosts from '@/views/blog/CategoryPosts.vue';
 
 import Registration from '@/views/auth/Registration.vue';
 import Login from '@/views/auth/Login.vue';
@@ -37,8 +38,13 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         name: 'blog.post',
-        path: '/blog/:id',
+        path: '/blog/post/:id',
         component: PostsShowPage
+    },
+    {
+        name: 'blog.category.posts',
+        path: '/blog/:categoryUrl',
+        component: CategoryPosts
     },
     {
         name: 'auth.registration',
@@ -64,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
                 component: PersonalProfilePage
             },
             {
-                path: '/posts',
+                path: '/post',
                 component: PersonalPostsBase,
                 children: [
                     {
@@ -79,7 +85,7 @@ const routes: Array<RouteRecordRaw> = [
                     },
                     {
                         name: 'personal.posts.edit',
-                        path: ':id',
+                        path: 'edit/:id',
                         component: PersonalPostsEditPage
                     }
                 ]

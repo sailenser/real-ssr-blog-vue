@@ -15,7 +15,7 @@ import '@/assets/styles/index.scss'
         pinia.state.value = window.appServerData.store;
     }
     else{
-        await store.sample().initData(); // попадаем сюда только если ssr -> error(всему сайту ппц вообщем)
+        await store.sample().initData();
     }
 
     await router.isReady();
@@ -26,3 +26,5 @@ import '@/assets/styles/index.scss'
         Object.keys(context.apiCache).forEach(key => delete context.apiCache[key]);
     }, 300);
 })();
+
+
