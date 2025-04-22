@@ -20,15 +20,17 @@
         <CategoryTree :treeData="categoryTree" />
       </pre>
     </div>
-    <RouterView v-slot="{ Component, route }">
-      <Transition name="app-fade" mode="out-in">
-        <div v-if="Component" :key="route.matched[0].name">
-          <Suspense :key="route.matched[0].name">
-            <component :is="Component"></component>
-          </Suspense>
-        </div>
-      </Transition>
-    </RouterView>
+    <component :is="layoutComponent">
+      <RouterView v-slot="{ Component, route }">
+        <Transition name="app-fade" mode="out-in">
+          <div v-if="Component" :key="route.matched[0].name">
+            <Suspense :key="route.matched[0].name">
+              <component :is="Component"></component>
+            </Suspense>
+          </div>
+        </Transition>
+      </RouterView>
+    </component>
   </main>
   <footer>
     <p>© 2025. Все права защищены</p>
@@ -59,4 +61,21 @@ const buildTree = (items, parentId = null) => {
 };
 
 const categoryTree = computed(() => buildTree(sampleStore.category));
+
+import { useRoute } from 'vue-router';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import ColumnLayout from '@/layouts/ColumnLayout.vue';
+
+const layouts = {
+  default: DefaultLayout,
+  column: ColumnLayout,
+}
+
+const route = useRoute();
+
+// Вычисляем текущий layout
+const layoutComponent = computed(() => {
+  const layout = route.meta.layout || 'default'
+  return layouts[layout] || layouts.default
+})
 </script>

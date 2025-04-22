@@ -24,44 +24,68 @@ const routes: Array<RouteRecordRaw> = [
     {
         name: 'home',
         path: '/',
-        component: HomePage
+        component: HomePage,
+        meta: {
+            layout: "default"
+        },
     },
     {
         name: 'about',
         path: '/about',
-        component: About
+        component: About,
+        meta: {
+            layout: "default"
+        },
     },
     {
         name: 'blog.index',
         path: '/blog',
-        component: Blog
+        component: Blog,
+        meta: {
+            layout: "column"
+        },
     },
     {
         name: 'blog.post',
         path: '/blog/post/:id',
-        component: PostsShowPage
+        component: PostsShowPage,
+        meta: {
+            layout: "column"
+        },
     },
     {
         name: 'blog.category.posts',
         path: '/blog/:categoryUrl',
-        component: CategoryPosts
+        component: CategoryPosts,
+        meta: {
+            layout: "column"
+        },
     },
     {
         name: 'auth.registration',
         path: '/registration',
-        meta: { guest: true },
+        meta: {
+            guest: true,
+            layout: "default"
+        },
         component: Registration
     },
     {
         name: 'auth.login',
         path: '/login',
-        meta: { guest: true },
+        meta: {
+            guest: true,
+            layout: "default"
+        },
         component: Login
     },
     {
         name: 'personal.lk',
         path: '/lk',
-        meta: { auth: true },
+        meta: {
+            auth: true,
+            layout: "column"
+        },
         component: Personal,
         children: [
             {
