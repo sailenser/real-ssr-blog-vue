@@ -84,7 +84,7 @@ const routes: Array<RouteRecordRaw> = [
         path: '/lk',
         meta: {
             auth: true,
-            layout: "column"
+            layout: "personal"
         },
         component: Personal,
         children: [

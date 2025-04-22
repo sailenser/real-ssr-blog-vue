@@ -1,7 +1,7 @@
 <template>
   <div>Lk Home</div>
   <RouterLink to="/profile">Профиль</RouterLink>
-  <RouterLink to="/posts">Посты</RouterLink>
+  <RouterLink to="/post">Создать новый пост</RouterLink>
   <div>
     <RouterView v-slot="{ Component, route }">
       <Transition name="app-fade" mode="out-in">

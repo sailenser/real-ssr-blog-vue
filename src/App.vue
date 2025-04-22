@@ -15,11 +15,6 @@
     </nav>
   </header>
   <main>
-    <div>
-      <pre>
-        <CategoryTree :treeData="categoryTree" />
-      </pre>
-    </div>
     <component :is="layoutComponent">
       <RouterView v-slot="{ Component, route }">
         <Transition name="app-fade" mode="out-in">
@@ -38,37 +33,25 @@
 </template>
 <script setup>
 import useStore from '@/composables/useStore';
-import CategoryTree from '@/components/category-tree/CategoryTree.vue'
+
 import {computed} from "vue";
 
-const [ authStore, sampleStore ] = useStore('auth', 'sample');
+const [ authStore ] = useStore('auth');
 
 function tryLogout(){
   localStorage.removeItem('AUTH_TOKEN');
   document.location = '/';
 }
 
-//Функция для построения дерева категорий
-const buildTree = (items, parentId = null) => {
-  // console.log("items", items);
-
-  return items
-      .filter(item => item.parent_id === parentId)
-      .map(item => ({
-        ...item,
-        children: buildTree(items, item.id)
-      }));
-};
-
-const categoryTree = computed(() => buildTree(sampleStore.category));
-
 import { useRoute } from 'vue-router';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import ColumnLayout from '@/layouts/ColumnLayout.vue';
+import PersonalLayout from '@/layouts/PersonalLayout.vue';
 
 const layouts = {
   default: DefaultLayout,
   column: ColumnLayout,
+  personal: PersonalLayout,
 }
 
 const route = useRoute();
