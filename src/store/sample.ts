@@ -26,6 +26,10 @@ export default function createSampleStore(postsApi: CategoryPostsApi) {
                 const category = state.category.find((cat) => cat.url === url);
                 return category?.id || null;
             },
+            getCategoryNameByUrl: (state) => (url:string) => {
+                const category = state.category.find((cat) => cat.url === url);
+                return category?.name || null;
+            },
         },
     });
 }

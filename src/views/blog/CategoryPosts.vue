@@ -25,12 +25,15 @@
 </template>
 
 <script setup>
+  import {RouterLink} from "vue-router";
   import useApi from '@/composables/useApi'
   import useStore from '@/composables/useStore'
   import useApiRequest from '@/composables/useApiRequest'
   import useRouteString from "@/composables/useRouteString";
-  import {RouterLink} from "vue-router";
   import { onBeforeRouteUpdate } from 'vue-router';
+  import usePageInfo from '@/composables/usePageInfo';
+
+  const [ authStore, sampleStore ] = useStore('auth', 'sample');
 
   const api = useApi();
 
@@ -39,16 +42,19 @@
     const categoryId = sampleStore.getCategoryIdByUrl(urlParam);
     await getCategoryPosts(categoryId);
   };
-
   const { valid, result } = useRouteString('categoryUrl');
-  const [ authStore, sampleStore ] = useStore('auth', 'sample');
   const [ request, getCategoryPosts ] = useApiRequest('posts.categoryPosts');
+
+  let titlePage = sampleStore.getCategoryNameByUrl(result.value);
+
+  usePageInfo(titlePage);
 
   // Первоначальная загрузка
   await loadPosts(result.value);
 
   // При смене категории
   onBeforeRouteUpdate(async (to, from, next) => {
+    usePageInfo(sampleStore.getCategoryNameByUrl(to.params.categoryUrl));
     await loadPosts(to.params.categoryUrl);
     next();
   });

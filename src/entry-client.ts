@@ -1,5 +1,4 @@
 import makeApp from "./main";
-import '@/assets/styles/index.scss'
 
 (async function(){
     const context = {

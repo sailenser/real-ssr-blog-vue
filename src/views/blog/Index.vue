@@ -23,7 +23,6 @@
 </template>
 
 <script setup>
-  import { computed } from "vue";
   import { RouterLink } from 'vue-router';
   import useApi from '@/composables/useApi'
   import useStore from '@/composables/useStore'

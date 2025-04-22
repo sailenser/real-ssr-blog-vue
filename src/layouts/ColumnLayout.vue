@@ -22,8 +22,6 @@ const [ sampleStore ] = useStore('sample');
 
 //Функция для построения дерева категорий
 const buildTree = (items, parentId = null) => {
-  // console.log("items", items);
-
   return items
       .filter(item => item.parent_id === parentId)
       .map(item => ({
