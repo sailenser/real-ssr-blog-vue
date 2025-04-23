@@ -10,9 +10,16 @@ body {
 }
 
 header {
-    background: #333;
+    background: #222;
     color: white;
     padding: 20px;
+
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 
 main {
@@ -21,7 +28,7 @@ main {
 }
 
 footer {
-    background: #333;
+    background: #222;
     color: white;
     text-align: center;
     padding: 10px;

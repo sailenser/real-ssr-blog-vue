@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/">Logo</RouterLink>
+      <RouterLink class="logo" to="/">VueSsr</RouterLink>
       <RouterLink to="/about">Обо мне</RouterLink>
       <RouterLink to="/blog">Блог</RouterLink>
       <template v-if="!authStore.isAuth">
