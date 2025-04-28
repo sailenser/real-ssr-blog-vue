@@ -16,6 +16,7 @@
         </div>
         <div v-if="authStore.user?.id == post.user_id">
           <RouterLink :to="{ name: 'personal.posts.edit', params: { id: post.id } }">Edit</RouterLink>
+          <button @click="removePost(post.id)">Delete</button>
         </div>
       </div>
     </div>
@@ -31,8 +32,13 @@
 
   const api = useApi();
   const [ request, getAllPosts ] = useApiRequest('posts.all');
-  const [ authStore ] = useStore('auth', 'sample');
+  const [ authStore ] = useStore('auth');
 
   usePageInfo('Блог');
   await getAllPosts();
+
+  function removePost(id) {
+    api.posts.remove(id);
+    document.location = '/blog';
+  }
 </script>

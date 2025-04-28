@@ -17,6 +17,7 @@
           </div>
           <div v-if="authStore.user?.id == post.user_id">
             <RouterLink :to="{ name: 'personal.posts.edit', params: { id: post.id } }">Edit</RouterLink>
+            <button @click="removePost(post.id)">Delete</button>
           </div>
         </div>
       </div>
@@ -48,6 +49,11 @@
   let titlePage = sampleStore.getCategoryNameByUrl(result.value);
 
   usePageInfo(titlePage);
+
+  function removePost(id) {
+    api.posts.remove(id);
+    document.location = '/blog';
+  }
 
   // Первоначальная загрузка
   await loadPosts(result.value);

@@ -1,16 +1,16 @@
 <template>
-  <header>
-    <nav>
-      <RouterLink class="logo" to="/">VueSsr</RouterLink>
-      <RouterLink to="/about">Обо мне</RouterLink>
-      <RouterLink to="/blog">Блог</RouterLink>
+  <header class="page-header">
+    <RouterLink class="page-header__logo" to="/">VueSsr</RouterLink>
+    <nav class="header-navigation page-header__navigation">
+      <RouterLink class="header-navigation__item" to="/about">Обо мне</RouterLink>
+      <RouterLink class="header-navigation__item" to="/blog">Блог</RouterLink>
       <template v-if="!authStore.isAuth">
-        <RouterLink to="/registration">Регистрация</RouterLink>
-        <RouterLink to="/login">Вход</RouterLink>
+        <RouterLink class="header-navigation__item" to="/registration">Регистрация</RouterLink>
+        <RouterLink class="header-navigation__item" to="/login">Вход</RouterLink>
       </template>
       <template v-else>
-        <RouterLink to="/lk">Личный кабинет</RouterLink>
-        <button @click="tryLogout">Выход</button>
+        <RouterLink class="header-navigation__item" to="/lk">Личный кабинет</RouterLink>
+        <button class="header-navigation__item" @click="tryLogout">Выход</button>
       </template>
     </nav>
   </header>
