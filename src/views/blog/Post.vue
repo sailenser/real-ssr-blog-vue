@@ -10,7 +10,7 @@
       <h1>{{ request.data.title }}</h1>
       <div>{{ request.data.url }}</div>
       <div>{{ request.data.contents }}</div>
-      <AppCommentWidget :id="value" />
+      <CommentWidget :id="value" />
     </div>
     <E404 v-else text="Post not found" />
   </div>
@@ -23,7 +23,7 @@
   import useRouteInt from '@/composables/useRouteInt'
   import usePageInfo from '@/composables/usePageInfo';
   import E404 from '@/components/errors/E404.vue'
-  import AppCommentWidget from '@/components/comments/Widget.vue'
+  import CommentWidget from '@/components/comments/CommentWidget.vue'
 
   const { valid, value } = useRouteInt('id');
   const api = useApi();
