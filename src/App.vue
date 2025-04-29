@@ -14,21 +14,19 @@
       </template>
     </nav>
   </header>
-  <main>
-    <component :is="layoutComponent">
-      <RouterView v-slot="{ Component, route }">
-        <Transition name="app-fade" mode="out-in">
-          <div v-if="Component" :key="route.matched[0].name">
-            <Suspense :key="route.matched[0].name">
-              <component :is="Component"></component>
-            </Suspense>
-          </div>
-        </Transition>
-      </RouterView>
-    </component>
-  </main>
-  <footer>
-    <p>© 2025. Все права защищены</p>
+  <component :is="layoutComponent">
+    <RouterView v-slot="{ Component, route }">
+      <Transition name="app-fade" mode="out-in">
+        <div v-if="Component" :key="route.matched[0].name">
+          <Suspense :key="route.matched[0].name">
+            <component :is="Component"></component>
+          </Suspense>
+        </div>
+      </Transition>
+    </RouterView>
+  </component>
+  <footer class="page-footer">
+    <p class="page-footer__copyright">© 2025. Все права защищены</p>
   </footer>
 </template>
 <script setup>

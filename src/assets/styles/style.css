@@ -41,16 +41,136 @@ body {
     }
 }
 
-main {
-    padding: 20px;
+.page-blog {
+    padding-left: 15px;
+}
+
+.page-blog__head,
+.page-post__title {
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+}
+
+.page-blog__head {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.page-post__title {
+    font-size: 18px;
+    color: #343434;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 3px;
+    display: inline-block;
+}
+
+.page-posts__post {
+    margin-bottom: 15px;
+
+}
+
+.page-posts__post:not(:last-child) {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 15px;
+}
+
+.page-header__logo:hover,
+.page-post__title:hover,
+.header-navigation__item:hover {
+    color: #04bc77;
+}
+
+.page-content {
     background: #f4f4f4;
 }
 
-footer {
-    background: #222;
-    color: white;
+.page-post__date {
+    color: #7b7a7a;
+    font-size: 14px;
+    margin-bottom: 2px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page-post__descript {
+    color: #9c9c9c;
+    font-size: 15px;
+    margin-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page-post__btn {
+    font-size: 16px;
+    padding: 8px 16px;
+    color: #fff;
+    display: inline-block;
+    margin-right: 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page-post__btn--more {
+    background-color: #04bc77;
+}
+
+.page-post__btn--more:hover {
+    background-color: #24e29b;
+}
+
+.page-post__btn--edit {
+    background-color: #e18334;
+}
+
+.page-post__btn--edit:hover {
+    background-color: #f59a4d;
+}
+
+.page-post__btn--delete {
+    background-color: #d83838;
+}
+
+.page-post__btn--delete:hover {
+    background-color: #f14f4f;
+}
+
+.page-content__wrapper {
+    padding: 20px;
+}
+
+.page-content--column .page-content__wrapper {
+    grid-template-columns: 190px auto;
+    display: grid;
+    height: 100%;
+    /*padding: 0;*/
+    /*border-right: 1px solid #e1e1e1;*/
+}
+
+.page-footer {
+    background: hsl(0, 0%, 13%);
     text-align: center;
-    padding: 10px;
+    padding: 15px;
+}
+
+.page-footer__copyright {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page-aside {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background-color: #e1e1e1;
+        width: 1px;
+        height: 100%;
+    }
 }
 
 /*

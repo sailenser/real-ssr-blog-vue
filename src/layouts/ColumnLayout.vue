@@ -1,12 +1,12 @@
 <template>
-    <div>
-      <pre>
+  <main class="page-content page-content--column">
+    <div class="page-content__wrapper">
+      <div class="page-aside page-content__aside">
         <CategoryTree :treeData="categoryTree" />
-      </pre>
+      </div>
+      <slot />
     </div>
-  <div>
-    <slot />
-  </div>
+  </main>
 </template>
 
 <script setup>

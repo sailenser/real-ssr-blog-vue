@@ -1,27 +1,40 @@
 <template>
-  <div>
-    <h1>Posts Category</h1>
-    <Transition name="app-fade" mode="out-in">
+  <div class="page-blog">
+    <h1 class="page-blog__head">{{titlePage}}</h1>
+    <div
+        v-if="request.success"
+        class="page-posts page-blog__posts"
+    >
       <div
-          v-if="request.success"
-          class="page-posts"
+          v-for="post in request.data"
+          :key="post.id"
+          class="page-post page-posts__post"
       >
-        <div
-            v-for="post in request.data"
-            :key="post.id"
-            class="page-post page-posts__post"
-        >
-          <span>{{ post.title }}</span>
-          <div>
-            <RouterLink :to="{ name: 'blog.post', params: { id: post.id } }">Read more</RouterLink>
-          </div>
-          <div v-if="authStore.user?.id == post.user_id">
-            <RouterLink :to="{ name: 'personal.posts.edit', params: { id: post.id } }">Edit</RouterLink>
-            <button @click="removePost(post.id)">Delete</button>
-          </div>
+        <RouterLink :to="{ name: 'blog.post', params: { id: post.id } }" class="page-post__title">{{ post.title }}</RouterLink>
+        <p class="page-post__date">{{ post.data }}</p>
+        <p class="page-post__descript">{{ post.description }}</p>
+        <div>
+          <RouterLink
+              :to="{ name: 'blog.post', params: { id: post.id } }"
+              class="page-post__btn page-post__btn--more"
+          >
+            Подробнее
+          </RouterLink>
+          <template v-if="authStore.user?.id == post.user_id">
+            <RouterLink
+                :to="{ name: 'personal.posts.edit', params: { id: post.id } }"
+                class="page-post__btn page-post__btn--edit"
+            >
+              Редактировать
+            </RouterLink>
+            <button
+                @click="removePost(post.id)"
+                class="page-post__btn page-post__btn--delete"
+            >Удалить</button>
+          </template>
         </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 
@@ -33,6 +46,7 @@
   import useRouteString from "@/composables/useRouteString";
   import { onBeforeRouteUpdate } from 'vue-router';
   import usePageInfo from '@/composables/usePageInfo';
+  import {ref} from "vue";
 
   const [ authStore, sampleStore ] = useStore('auth', 'sample');
 
@@ -46,7 +60,7 @@
   const { valid, result } = useRouteString('categoryUrl');
   const [ request, getCategoryPosts ] = useApiRequest('posts.categoryPosts');
 
-  let titlePage = sampleStore.getCategoryNameByUrl(result.value);
+  const titlePage = ref(sampleStore.getCategoryNameByUrl(result.value));
 
   usePageInfo(titlePage);
 

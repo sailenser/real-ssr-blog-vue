@@ -1,22 +1,37 @@
 <template>
-  <div>
-    <h1>Posts</h1>
+  <div class="page-blog">
+    <h1 class="page-blog__head">Новости</h1>
     <div
         v-if="request.success"
-        class="page-posts"
+        class="page-posts page-blog__posts"
     >
       <div
           v-for="post in request.data"
           :key="post.id"
           class="page-post page-posts__post"
       >
-        <span>{{ post.title }}</span>
+        <RouterLink :to="{ name: 'blog.post', params: { id: post.id } }" class="page-post__title">{{ post.title }}</RouterLink>
+        <p class="page-post__date">{{ post.data }}</p>
+        <p class="page-post__descript">{{ post.description }}</p>
         <div>
-          <RouterLink :to="{ name: 'blog.post', params: { id: post.id } }">Read more</RouterLink>
-        </div>
-        <div v-if="authStore.user?.id == post.user_id">
-          <RouterLink :to="{ name: 'personal.posts.edit', params: { id: post.id } }">Edit</RouterLink>
-          <button @click="removePost(post.id)">Delete</button>
+          <RouterLink
+              :to="{ name: 'blog.post', params: { id: post.id } }"
+              class="page-post__btn page-post__btn--more"
+          >
+            Подробнее
+          </RouterLink>
+          <template v-if="authStore.user?.id == post.user_id">
+            <RouterLink
+                :to="{ name: 'personal.posts.edit', params: { id: post.id } }"
+                class="page-post__btn page-post__btn--edit"
+            >
+              Редактировать
+            </RouterLink>
+            <button
+                @click="removePost(post.id)"
+                class="page-post__btn page-post__btn--delete"
+            >Удалить</button>
+          </template>
         </div>
       </div>
     </div>
