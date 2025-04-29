@@ -10,7 +10,7 @@
       <CategoryTree
           v-if="category.children && category.children.length"
           :treeData="category.children"
-          class="category-children"
+          class="category-tree__children"
       />
     </li>
   </ul>
@@ -51,19 +51,19 @@ export default {
   color: #24e29b;
 }
 
-.category-children {
+.category-tree__children {
   padding-left: 20px;
   margin-top: 8px;
   border-left: 2px solid #eee;
 }
 
-.category-link {
+.category-tree__link {
   text-decoration: none;
   color: #333;
   transition: color 0.2s;
 }
 
-.category-link:hover {
+.category-tree__link:hover {
   color: #42b983;
 }
 </style>

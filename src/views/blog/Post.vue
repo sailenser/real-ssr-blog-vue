@@ -6,11 +6,12 @@
     >
       Назад
     </RouterLink>
-    <div v-if="request.success">
-      <h1>{{ request.data.title }}</h1>
-      <div>{{ request.data.url }}</div>
-      <div>{{ request.data.contents }}</div>
-      <CommentWidget :id="value" />
+    <div v-if="requestPost.success">
+      <h1>{{ requestPost.data.title }}</h1>
+      <div>{{ requestPost.data.url }}</div>
+      <div>{{ requestPost.data.contents }}</div>
+      <h2>Комментарии</h2>
+      <CommentTree :treeData="commentsTree" />
     </div>
     <E404 v-else text="Post not found" />
   </div>
@@ -23,15 +24,24 @@
   import useRouteInt from '@/composables/useRouteInt'
   import usePageInfo from '@/composables/usePageInfo';
   import E404 from '@/components/errors/E404.vue'
-  import CommentWidget from '@/components/comments/CommentWidget.vue'
+  import CommentTree from '@/components/comments/CommentTree.vue'
+  import useBuildTree from "@/composables/useBuildTree.js";
+  import { toRaw } from 'vue';
 
   const { valid, value } = useRouteInt('id');
   const api = useApi();
-  const [ request, getProduct ] = useApiRequest('posts.one');
+  const [ requestPost, getOnePost ] = useApiRequest('posts.one');
 
-  await getProduct(value.value);
+  await getOnePost(value.value);
 
-  if(request.value.success){
-    usePageInfo(request.value.data.title);
+  const [ requestComments, getComments ] = useApiRequest('comments.all');
+
+  await getComments(value.value);
+
+  const { comments } = toRaw(requestComments.value.data);
+  const commentsTree = useBuildTree(comments)
+
+  if(requestPost.value.success){
+    usePageInfo(requestPost.value.data.title);
   }
 </script>

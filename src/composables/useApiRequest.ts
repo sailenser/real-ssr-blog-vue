@@ -53,6 +53,5 @@ export default function useApiRequest<T = any>(
             }
         }
     }
-
     return [result, execute];
 }
