@@ -10,9 +10,9 @@
 </template>
 
 <script setup>
-import {computed} from "vue";
+import { computed, toRaw } from "vue";
 import CategoryTree from '@/components/category-tree/CategoryTree.vue'
-import useStore from "@/composables/useStore.js";
+import useStore from "@/composables/useStore.ts";
 import useBuildTree from "@/composables/useBuildTree.ts";
 
 defineOptions({
@@ -20,6 +20,5 @@ defineOptions({
 });
 
 const [ sampleStore ] = useStore('sample');
-const { treeItem } = useBuildTree(sampleStore.category)
-const categoryTree = computed(() => treeItem);
+const categoryTree = useBuildTree(sampleStore.category)
 </script>
