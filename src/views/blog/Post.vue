@@ -1,12 +1,19 @@
 <template>
-  <RouterLink :to="{ name: 'blog.index'}">Back to blog</RouterLink>
-  <div v-if="request.success">
-    <h1>{{ request.data.title }}</h1>
-    <div>{{ request.data.url }}</div>
-    <div>{{ request.data.contents }}</div>
-    <AppCommentWidget :id="value" />
+  <div class="page-blog">
+    <RouterLink
+        :to="{ name: 'blog.index'}"
+        class="page-post__btn page-post__btn--back"
+    >
+      Назад
+    </RouterLink>
+    <div v-if="request.success">
+      <h1>{{ request.data.title }}</h1>
+      <div>{{ request.data.url }}</div>
+      <div>{{ request.data.contents }}</div>
+      <AppCommentWidget :id="value" />
+    </div>
+    <E404 v-else text="Post not found" />
   </div>
-  <E404 v-else text="Post not found" />
 </template>
 
 <script setup>
