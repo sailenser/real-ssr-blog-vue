@@ -1,20 +1,28 @@
 <template>
   <div>
     <form>
-      <h2>Вход</h2>
-      <div>
-        <label for="name">Имя:</label>
-        <div>{{ errors.name }}</div>
-        <input v-model="dataForm.name" type="text" id="name" name="name" required minlength="2" placeholder="Введите ваше имя">
-      </div>
+      <h1 class="page-blog__head">Вход</h1>
+      <div class="page-blog__wrap">
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="name">Имя:</label>
+          <div class="page-blog__error">{{ errors.name }}</div>
+          <input class="page-blog__input" v-model="dataForm.name" type="text" id="name" name="name" required minlength="2" placeholder="Введите ваше имя">
+        </div>
 
-      <div>
-        <label for="password">Пароль:</label>
-        <div>{{ errors.password }}</div>
-        <input v-model="dataForm.password" type="password" id="password" name="password" required minlength="9" placeholder="Введите пароль">
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="password">Пароль:</label>
+          <div class="page-blog__error">{{ errors.password }}</div>
+          <input class="page-blog__input" v-model="dataForm.password" type="password" id="password" name="password" required minlength="9" placeholder="Введите пароль">
+        </div>
       </div>
-
-      <button :disabled="pending" @click="send" type="button" class="btn">Вход</button>
+      <button
+          :disabled="pending"
+          @click="send"
+          type="button"
+          class="page-blog__btn page-blog__btn--register"
+      >
+        Вход
+      </button>
       <div>{{ externalError }}</div>
     </form>
   </div>

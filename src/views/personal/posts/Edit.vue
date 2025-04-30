@@ -1,27 +1,37 @@
 <template>
-  <form>
-    <h2>Personal Post Edit</h2>
-    <div>
-      <label for="name">Url:</label>
-      <div>{{ errors.url }}</div>
-      <input v-model="dataForm.url" type="text" id="url" name="url" required minlength="2" placeholder="Введите ваше имя">
-    </div>
+  <div class="page-blog">
+    <h2 class="page-blog__head page-blog__head--lk">Редактировать пост</h2>
+    <form>
+      <div class="page-blog__wrap">
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="name">Url:</label>
+          <div class="page-blog__error">{{ errors.url }}</div>
+          <input class="page-blog__input" v-model="dataForm.url" type="text" id="url" name="url" required minlength="2" placeholder="Введите ваше имя">
+        </div>
 
-    <div>
-      <label for="title">Title:</label>
-      <div>{{ errors.title }}</div>
-      <input v-model="dataForm.title" type="text" id="title" name="title" required minlength="9" placeholder="Введите title">
-    </div>
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="title">Title:</label>
+          <div class="page-blog__error">{{ errors.title }}</div>
+          <input class="page-blog__input" v-model="dataForm.title" type="text" id="title" name="title" required minlength="9" placeholder="Введите title">
+        </div>
 
-    <div>
-      <label for="title">Content:</label>
-      <div>{{ errors.contents }}</div>
-      <input v-model="dataForm.contents" type="text" id="content" name="content" required minlength="9" placeholder="Введите content">
-    </div>
-
-    <button :disabled="pending" @click="send" type="button" class="btn">Edit</button>
-    <div>{{ externalError }}</div>
-  </form>
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="title">Content:</label>
+          <div class="page-blog__error">{{ errors.contents }}</div>
+          <input class="page-blog__input" v-model="dataForm.contents" type="text" id="content" name="content" required minlength="9" placeholder="Введите content">
+        </div>
+      </div>
+      <button
+          :disabled="pending"
+          @click="send"
+          type="button"
+          class="page-blog__btn page-blog__btn--lk"
+      >
+        Редактировать
+      </button>
+      <div>{{ externalError }}</div>
+    </form>
+  </div>
 </template>
 
 <script setup>

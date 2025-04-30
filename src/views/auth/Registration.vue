@@ -1,32 +1,40 @@
 <template>
   <div>
     <form>
-      <h2>Регистрация</h2>
-      <div>
-        <label for="name">Имя:</label>
-        <div>{{ errors.name }}</div>
-        <input v-model="dataForm.name" type="text" id="name" name="name" required minlength="2" placeholder="Введите ваше имя">
-      </div>
+      <h1 class="page-blog__head">Регистрация</h1>
+      <div class="page-blog__wrap">
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="name">Имя:</label>
+          <div class="page-blog__error">{{ errors.name }}</div>
+          <input class="page-blog__input" v-model="dataForm.name" type="text" id="name" name="name" required minlength="2" placeholder="Введите ваше имя">
+        </div>
 
-      <div>
-        <label for="email">Email:</label>
-        <div>{{ errors.email }}</div>
-        <input v-model="dataForm.email" type="email" id="email" name="email" required placeholder="Введите ваш email">
-      </div>
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="email">Email:</label>
+          <div class="page-blog__error">{{ errors.email }}</div>
+          <input class="page-blog__input" v-model="dataForm.email" type="email" id="email" name="email" required placeholder="Введите ваш email">
+        </div>
 
-      <div>
-        <label for="password">Пароль:</label>
-        <div>{{ errors.password }}</div>
-        <input v-model="dataForm.password" type="password" id="password" name="password" required minlength="9" placeholder="Введите пароль">
-      </div>
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="password">Пароль:</label>
+          <div class="page-blog__error">{{ errors.password }}</div>
+          <input class="page-blog__input" v-model="dataForm.password" type="password" id="password" name="password" required minlength="9" placeholder="Введите пароль">
+        </div>
 
-      <div>
-        <label for="password_confirmation">Подтвердите пароль:</label>
-        <div>{{ errors.password_confirmation }}</div>
-        <input v-model="dataForm.password_confirmation" type="password" id="password_confirmation" name="password_confirmation" required placeholder="Подтвердите пароль">
+        <div class="page-blog__box">
+          <label class="page-blog__label" for="password_confirmation">Подтвердите пароль:</label>
+          <div class="page-blog__error">{{ errors.password_confirmation }}</div>
+          <input class="page-blog__input" v-model="dataForm.password_confirmation" type="password" id="password_confirmation" name="password_confirmation" required placeholder="Подтвердите пароль">
+        </div>
       </div>
-
-      <button @click="send" :disabled="pending" type="button" class="btn">Зарегистрироваться</button>
+      <button
+          class="page-blog__btn page-blog__btn--login"
+          @click="send"
+          :disabled="pending"
+          type="button"
+      >
+        Зарегистрироваться
+      </button>
       <div>{{ externalError }}</div>
     </form>
   </div>

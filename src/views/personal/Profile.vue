@@ -1,5 +1,7 @@
 <template>
-  <div>Profile pages</div>
+  <div class="page-blog">
+    <h2 class="page-blog__head page-blog__head--lk">Страница профиля</h2>
+  </div>
 </template>
 
 <script setup>

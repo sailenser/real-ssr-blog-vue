@@ -46,7 +46,10 @@ body {
 }
 
 .page-blog__head,
-.page-post__title {
+.page-post__title,
+.page-post__label,
+.page-blog__subhead,
+.page-post__input {
     font-weight: 600;
     font-family: 'Raleway', sans-serif;
 }
@@ -56,18 +59,50 @@ body {
     margin-bottom: 10px;
 }
 
+.page-blog__head--lk {
+    font-size: 20px;
+}
+
+.page-blog__subhead {
+    font-size: 19px;
+    margin-bottom: 7px;
+}
+
 .page-post__title {
     font-size: 18px;
     color: #343434;
-    font-weight: 600;
-    font-family: 'Raleway', sans-serif;
     margin-bottom: 3px;
     display: inline-block;
 }
 
+.page-blog__label {
+    font-size: 15px;
+    margin-bottom: 2px;
+    display: inline-block;
+}
+
+.page-blog__input {
+    font-size: 15px;
+    padding: 5px 4px;
+    border-radius: 5px;
+    width: 190px;
+    border: 1px solid #7d7575;
+}
+
+.page-blog__box {
+    margin-bottom: 8px;
+}
+
+.page-blog__wrap {
+    margin-bottom: 10px;
+}
+
+.page-blog__error {
+    color: #e53a3a;
+}
+
 .page-posts__post {
     margin-bottom: 15px;
-
 }
 
 .page-posts__post:not(:last-child) {
@@ -99,7 +134,8 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.page-post__btn {
+.page-post__btn,
+.page-blog__btn {
     font-size: 16px;
     padding: 8px 16px;
     color: #fff;
@@ -108,11 +144,34 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-.page-post__btn--more {
+.page-blog__content {
+    font-size: 16px;
+    color: #333;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page-blog__btn--lk,
+.page-blog__btn--register,
+.page-blog__btn--create{
+    border-radius: 3px;
+}
+
+.page-blog__btn--lk,
+.page-post__btn--more,
+.page-blog__btn--register,
+.page-blog__btn--login,
+.page-blog__btn--create {
     background-color: #04bc77;
 }
 
-.page-post__btn--more:hover {
+.page-blog__btn--lk:hover,
+.page-post__btn--more:hover,
+.page-blog__btn--register:hover,
+.page-blog__btn--login:hover,
+.page-blog__btn--create:hover {
     background-color: #24e29b;
 }
 
@@ -132,6 +191,16 @@ body {
     background-color: #f14f4f;
 }
 
+.page-aside__link {
+    font-weight: 600;
+    color: #343434;
+    font-family: 'Raleway', sans-serif;
+}
+
+.page-aside__link:hover {
+    color: #24e29b;
+}
+
 .page-post__btn--back {
     background-color: #2678d5;
 }
@@ -148,8 +217,6 @@ body {
     grid-template-columns: 190px auto;
     display: grid;
     height: 100%;
-    /*padding: 0;*/
-    /*border-right: 1px solid #e1e1e1;*/
 }
 
 .page-footer {
@@ -180,6 +247,12 @@ body {
         height: 100%;
     }
 }
+
+.comments-tree__name {
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+}
+
 
 /*
 a {

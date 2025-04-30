@@ -1,6 +1,13 @@
 <template>
-  <div>Personal Post Index</div>
-  <RouterLink :to="{ name: 'personal.posts.create' }">Create post</RouterLink>
+  <div class="page-blog">
+    <h2 class="page-blog__head page-blog__head--lk">Управление постами блога</h2>
+    <RouterLink
+        :to="{ name: 'personal.posts.create' }"
+        class="page-blog__btn page-blog__btn--create"
+    >
+      Создать пост
+    </RouterLink>
+  </div>
 </template>
 
 <script setup>

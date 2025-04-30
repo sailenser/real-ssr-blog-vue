@@ -7,10 +7,9 @@
       Назад
     </RouterLink>
     <div v-if="requestPost.success">
-      <h1>{{ requestPost.data.title }}</h1>
-      <div>{{ requestPost.data.url }}</div>
-      <div>{{ requestPost.data.contents }}</div>
-      <h2>Комментарии</h2>
+      <h1 class="page-blog__head">{{ requestPost.data.title }}</h1>
+      <div class="page-blog__content">{{ requestPost.data.contents }}</div>
+      <h2 class="page-blog__subhead">Комментарии</h2>
       <CommentTree :treeData="commentsTree" />
     </div>
     <E404 v-else text="Post not found" />
