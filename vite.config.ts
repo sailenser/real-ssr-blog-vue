@@ -9,14 +9,14 @@ export default defineConfig({
     vueDevTools(),
   ],
   server: {
-    // host: 'blog-srr.fronterbest.ru',
+    host: 'blog-srr.fronterbest.ru',
     port: 24678,
-    // hmr: {
-    //   protocol: 'wss',
-    //   host: 'blog-srr.fronterbest.ru',
-    //   port: 24678,
-    // },
-    // allowedHosts: ["blog-srr.fronterbest.ru"],
+    hmr: {
+      protocol: 'wss',
+      host: 'blog-srr.fronterbest.ru',
+      port: 24678,
+    },
+    allowedHosts: ["blog-srr.fronterbest.ru"],
   },
   assetsInclude: ["**/*.html"],
   resolve: {
