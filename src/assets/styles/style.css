@@ -15,6 +15,7 @@ body {
     align-items: center;
     background: hsl(0, 0%, 13%);
     padding: 20px;
+    min-height: 70px;
 }
 
 .page-header__logo {
@@ -22,10 +23,20 @@ body {
     font-weight: 700;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
+
+    @media (max-width: 655px) {
+        display: none;
+    }
 }
 
 .page-header__navigation {
-    margin-left: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    @media (min-width: 656px) {
+        margin-left: 15px;
+    }
 }
 
 .header-navigation__item {
@@ -35,10 +46,39 @@ body {
     font-weight: 600;
     text-decoration: none;
     font-family: 'Raleway', sans-serif;
+}
 
-    &:not(:last-child) {
-        margin-right: 10px;
+.header-navigation-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: 656px) {
+        display: flex !important;
     }
+
+    @media (max-width: 655px) {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        background-color: #25aae1;
+        z-index: 1;
+        width: 100%;
+        left: 0;
+        overflow-x: hidden;
+        transform-origin: 0 0;
+    }
+}
+
+.header-navigation-list__item {
+    @media (max-width: 655px) {
+        padding-left: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+}
+
+.header-navigation-list__item:not(:last-child) {
+    margin-right: 10px;
 }
 
 .page-blog {
@@ -326,4 +366,24 @@ body {
     text-decoration: none;
     color: #333;
     transition: color 0.2s;
+}
+
+.header-navigation__btn {
+    display: flex;
+    color: #fff;
+    margin-right: 5px;
+
+    @media (min-width: 656px) {
+        display: none;
+    }
+}
+
+.header-navigation__btn:hover {
+    color: #04bc77;
+}
+
+.header-navigation__ico {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
 }

@@ -2,16 +2,49 @@
   <header class="page-header">
     <RouterLink class="page-header__logo" to="/">VueSsr</RouterLink>
     <nav class="header-navigation page-header__navigation">
-      <RouterLink class="header-navigation__item" to="/about">Обо мне</RouterLink>
-      <RouterLink class="header-navigation__item" to="/blog">Блог</RouterLink>
-      <template v-if="!authStore.isAuth">
-        <RouterLink class="header-navigation__item" to="/registration">Регистрация</RouterLink>
-        <RouterLink class="header-navigation__item" to="/login">Вход</RouterLink>
-      </template>
-      <template v-else>
-        <RouterLink class="header-navigation__item" to="/lk">Личный кабинет</RouterLink>
-        <button class="header-navigation__item" @click="tryLogout">Выход</button>
-      </template>
+      <button @click="toggleMenu" class="header-navigation__btn">
+        <svg
+            class="header-navigation__ico"
+            width="24"
+            height="24"
+        >
+          <use xlink:href="#icon-bars" />
+        </svg>
+      </button>
+      <Transition name="app-fade-menu">
+        <ul
+          ref="menuElement"
+          v-show="isMenuShow"
+          @click="handleMenuClick"
+          class="header-navigation-list header-navigation__list"
+      >
+        <li v-show="isMenuShow" class="header-navigation-list__item">
+          <RouterLink class="header-navigation__item" to="/">Главная</RouterLink>
+        </li>
+        <li class="header-navigation-list__item">
+          <RouterLink class="header-navigation__item" to="/about">Обо мне</RouterLink>
+        </li>
+        <li class="header-navigation-list__item">
+          <RouterLink class="header-navigation__item" to="/blog">Блог</RouterLink>
+        </li>
+        <template v-if="!authStore.isAuth">
+          <li class="header-navigation-list__item">
+            <RouterLink class="header-navigation__item" to="/registration">Регистрация</RouterLink>
+          </li>
+          <li class="header-navigation-list__item">
+            <RouterLink class="header-navigation__item" to="/login">Вход</RouterLink>
+          </li>
+        </template>
+        <template v-else>
+          <li class="header-navigation-list__item">
+            <RouterLink class="header-navigation__item" to="/lk">Личный кабинет</RouterLink>
+          </li>
+          <li class="header-navigation-list__item">
+            <button class="header-navigation__item" @click="tryLogout">Выход</button>
+          </li>
+        </template>
+      </ul>
+      </Transition>
     </nav>
   </header>
   <component :is="layoutComponent">
@@ -29,22 +62,53 @@
     <p class="page-footer__copyright">© 2025. Все права защищены</p>
   </footer>
 </template>
-<script setup>
-import useStore from '@/composables/useStore';
 
-import {computed} from "vue";
+<script setup>
+import { computed, ref, onMounted, onBeforeUnmount, nextTick } from "vue";
+import { useRoute } from 'vue-router';
+import useStore from '@/composables/useStore';
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import ColumnLayout from '@/layouts/ColumnLayout.vue';
+import PersonalLayout from '@/layouts/PersonalLayout.vue';
 
 const [ authStore ] = useStore('auth');
-
 function tryLogout(){
   localStorage.removeItem('AUTH_TOKEN');
   document.location = '/';
 }
 
-import { useRoute } from 'vue-router';
-import DefaultLayout from '@/layouts/DefaultLayout.vue';
-import ColumnLayout from '@/layouts/ColumnLayout.vue';
-import PersonalLayout from '@/layouts/PersonalLayout.vue';
+const isMenuShow = ref(false);
+const menuElement = ref(null);
+
+function toggleMenu(event){
+  event.stopPropagation();
+  isMenuShow.value = !isMenuShow.value;
+}
+
+const handleClickOutside = (event) => {
+  if (!menuElement.value) return;
+
+  if (menuElement.value && !menuElement.value.contains(event.target)) {
+    isMenuShow.value = false;
+  }
+};
+
+onMounted(() => {
+  nextTick(() => {
+    document.addEventListener('click', handleClickOutside)
+  })
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside);
+});
+
+const handleMenuClick = (event) => {
+  const target = event.target
+  if (target.closest('a')) {
+    isMenuShow.value = false
+  }
+}
 
 const layouts = {
   default: DefaultLayout,
