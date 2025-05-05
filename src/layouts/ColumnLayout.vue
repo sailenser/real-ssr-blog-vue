@@ -21,5 +21,4 @@ defineOptions({
 const [ sampleStore ] = useStore('sample');
 
 const categoryTree = useBuildTree(sampleStore.category)
-console.log('categoryTree-->', categoryTree);
 </script>
