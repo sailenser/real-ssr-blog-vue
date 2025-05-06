@@ -47,6 +47,12 @@
           <li class="header-navigation-list__item">
             <RouterLink class="header-navigation-list__link" to="/lk">Личный кабинет</RouterLink>
           </li>
+          <li class="header-navigation-list__item header-navigation-list__item--hide">
+            <RouterLink class="header-navigation-list__link" to="/profile">Профиль</RouterLink>
+          </li>
+          <li class="header-navigation-list__item header-navigation-list__item--hide">
+            <RouterLink class="header-navigation-list__link" to="/post">Управление постами</RouterLink>
+          </li>
           <li class="header-navigation-list__item">
             <button
                 class="header-navigation__item"

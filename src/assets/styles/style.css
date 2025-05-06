@@ -78,6 +78,12 @@ body {
     }
 }
 
+.header-navigation-list__item--hide {
+    @media (min-width: 656px) {
+        display: none;
+    }
+}
+
 .header-navigation-sublist__item {
     @media (max-width: 655px) {
         padding-left: 30px;
