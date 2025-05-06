@@ -19,25 +19,26 @@
           class="header-navigation-list header-navigation__list"
       >
         <li v-show="isMenuShow" class="header-navigation-list__item">
-          <RouterLink class="header-navigation__item" to="/">Главная</RouterLink>
+          <RouterLink class="header-navigation-list__link" to="/">Главная</RouterLink>
         </li>
         <li class="header-navigation-list__item">
-          <RouterLink class="header-navigation__item" to="/about">Обо мне</RouterLink>
+          <RouterLink class="header-navigation-list__link" to="/about">Обо мне</RouterLink>
         </li>
         <li class="header-navigation-list__item">
-          <RouterLink class="header-navigation__item" to="/blog">Блог</RouterLink>
+          <RouterLink class="header-navigation-list__link" to="/blog">Блог</RouterLink>
         </li>
+        <HeaderCategoryTree :treeData="categoryTree" />
         <template v-if="!authStore.isAuth">
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation__item" to="/registration">Регистрация</RouterLink>
+            <RouterLink class="header-navigation-list__link" to="/registration">Регистрация</RouterLink>
           </li>
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation__item" to="/login">Вход</RouterLink>
+            <RouterLink class="header-navigation-list__link" to="/login">Вход</RouterLink>
           </li>
         </template>
         <template v-else>
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation__item" to="/lk">Личный кабинет</RouterLink>
+            <RouterLink class="header-navigation-list__link" to="/lk">Личный кабинет</RouterLink>
           </li>
           <li class="header-navigation-list__item">
             <button class="header-navigation__item" @click="tryLogout">Выход</button>
@@ -70,8 +71,10 @@ import useStore from '@/composables/useStore';
 import DefaultLayout from '@/layouts/DefaultLayout.vue';
 import ColumnLayout from '@/layouts/ColumnLayout.vue';
 import PersonalLayout from '@/layouts/PersonalLayout.vue';
+import useBuildTree from "@/composables/useBuildTree.js";
+import HeaderCategoryTree from "@/components/category-tree/HeaderCategoryTree.vue";
 
-const [ authStore ] = useStore('auth');
+const [ authStore, sampleStore ] = useStore('auth', 'sample');
 function tryLogout(){
   localStorage.removeItem('AUTH_TOKEN');
   document.location = '/';
@@ -122,5 +125,7 @@ const route = useRoute();
 const layoutComponent = computed(() => {
   const layout = route.meta.layout || 'default'
   return layouts[layout] || layouts.default
-})
+});
+
+const categoryTree = useBuildTree(sampleStore.category)
 </script>
