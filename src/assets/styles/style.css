@@ -39,7 +39,7 @@ body {
     }
 }
 
-.header-navigation__item {
+.header-navigation-list__item {
     font-size: 18px;
     color: #fff;
     line-height: 1.2;
@@ -195,6 +195,10 @@ body {
     background: #f4f4f4;
 }
 
+.page-blog__posts {
+    width: 100%;
+}
+
 .page-post__date {
     color: #7b7a7a;
     font-size: 14px;
@@ -217,6 +221,12 @@ body {
     display: inline-block;
     margin-right: 5px;
     font-family: 'Montserrat', sans-serif;
+}
+
+.page-post__btn:not(:last-child) {
+    @media (max-width: 655px) {
+        margin-bottom: 7px;
+    }
 }
 
 .page-blog__content {
@@ -292,6 +302,16 @@ body {
     grid-template-columns: 190px auto;
     display: grid;
     height: 100%;
+
+    @media (max-width: 655px) {
+        display: flex;
+    }
+}
+
+.page-content__stage {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
 }
 
 .page-footer {

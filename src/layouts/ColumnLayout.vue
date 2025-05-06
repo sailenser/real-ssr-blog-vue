@@ -4,7 +4,9 @@
       <div class="page-aside page-content__aside">
         <CategoryTree :treeData="categoryTree" />
       </div>
-      <slot />
+      <div class="page-content__stage">
+        <slot />
+      </div>
     </div>
   </main>
 </template>

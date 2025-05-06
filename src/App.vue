@@ -55,7 +55,7 @@
           </li>
           <li class="header-navigation-list__item">
             <button
-                class="header-navigation__item"
+                class="header-navigation-list__link"
                 @click="tryLogout"
                 type="button"
                 title="tryLogout"
