@@ -2,8 +2,15 @@
   <header class="page-header">
     <RouterLink class="page-header__logo" to="/">VueSsr</RouterLink>
     <nav class="header-navigation page-header__navigation">
-      <button @click="toggleMenu" class="header-navigation__btn">
+      <button
+          @click="toggleMenu"
+          class="header-navigation__btn"
+          type="button"
+          title="toggleMenu"
+          aria-label="toggleMenu"
+      >
         <svg
+            aria-hidden="true"
             class="header-navigation__ico"
             width="24"
             height="24"
@@ -41,7 +48,15 @@
             <RouterLink class="header-navigation-list__link" to="/lk">Личный кабинет</RouterLink>
           </li>
           <li class="header-navigation-list__item">
-            <button class="header-navigation__item" @click="tryLogout">Выход</button>
+            <button
+                class="header-navigation__item"
+                @click="tryLogout"
+                type="button"
+                title="tryLogout"
+                aria-label="tryLogout"
+            >
+              Выход
+            </button>
           </li>
         </template>
       </ul>

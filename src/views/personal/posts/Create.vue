@@ -31,6 +31,8 @@
           :disabled="pending"
           @click="send"
           type="button"
+          title="create"
+          aria-label="create"
           class="page-blog__btn page-blog__btn--lk"
       >
         Create

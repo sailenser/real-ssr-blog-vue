@@ -25,6 +25,8 @@
           :disabled="pending"
           @click="send"
           type="button"
+          title="edit"
+          aria-label="edit"
           class="page-blog__btn page-blog__btn--lk"
       >
         Редактировать

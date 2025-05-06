@@ -19,6 +19,8 @@
           :disabled="pending"
           @click="send"
           type="button"
+          title="login"
+          aria-label="login"
           class="page-blog__btn page-blog__btn--register"
       >
         Вход

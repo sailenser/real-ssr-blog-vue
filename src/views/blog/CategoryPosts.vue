@@ -29,6 +29,9 @@
             </RouterLink>
             <button
                 @click="removePost(post.id)"
+                type="button"
+                title="delete"
+                aria-label="delete"
                 class="page-post__btn page-post__btn--delete"
             >Удалить</button>
           </template>

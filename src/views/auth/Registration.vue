@@ -32,6 +32,8 @@
           @click="send"
           :disabled="pending"
           type="button"
+          title="register"
+          aria-label="register"
       >
         Зарегистрироваться
       </button>
