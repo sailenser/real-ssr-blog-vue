@@ -374,7 +374,7 @@ body {
 .category-tree__children {
     padding-left: 20px;
     margin-top: 8px;
-    border-left: 2px solid #eee;
+    /*border-left: 2px solid #eee;*/
 }
 
 .category-tree__link {
