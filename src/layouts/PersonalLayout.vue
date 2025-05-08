@@ -12,8 +12,8 @@
         </div>
         <div>
           <RouterLink
-              class="page-aside__link"
               :to="{ name: 'personal.posts.index'}"
+              class="page-aside__link"
           >
             Управление постами
           </RouterLink>

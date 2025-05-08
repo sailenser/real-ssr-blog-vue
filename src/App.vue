@@ -53,7 +53,7 @@
             </RouterLink>
           </li>
           <li class="header-navigation-list__item header-navigation-list__item--hide">
-            <RouterLink :to="{ name: 'personal.posts.index' }" class="header-navigation-list__link">Управление постами</RouterLink>
+            <RouterLink :to="{ name: 'personal.posts.index'}" class="header-navigation-list__link">Управление постами</RouterLink>
           </li>
           <li class="header-navigation-list__item">
             <button
