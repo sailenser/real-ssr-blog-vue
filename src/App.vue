@@ -32,31 +32,28 @@
           <RouterLink :to="{ name: 'about' }" class="header-navigation-list__link">Обо мне</RouterLink>
         </li>
         <li class="header-navigation-list__item">
-          <RouterLink class="header-navigation-list__link" to="/blog">Блог</RouterLink>
+          <RouterLink :to="{ name: 'blog.index' }" class="header-navigation-list__link">Блог</RouterLink>
         </li>
         <HeaderCategoryTree :treeData="categoryTree" />
         <template v-if="!authStore.isAuth">
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation-list__link" to="/registration">Регистрация</RouterLink>
+            <RouterLink :to="{ name: 'auth.registration' }" class="header-navigation-list__link">Регистрация</RouterLink>
           </li>
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation-list__link" to="/login">Вход</RouterLink>
+            <RouterLink :to="{ name: 'auth.login' }" class="header-navigation-list__link">Вход</RouterLink>
           </li>
         </template>
         <template v-else>
           <li class="header-navigation-list__item">
-            <RouterLink class="header-navigation-list__link" to="/lk">Личный кабинет</RouterLink>
+            <RouterLink :to="{ name: 'personal.lk' }" class="header-navigation-list__link">Личный кабинет</RouterLink>
           </li>
           <li class="header-navigation-list__item header-navigation-list__item--hide">
-            <RouterLink
-                :to="{ name: 'personal.profile.index' }"
-                class="header-navigation-list__link"
-            >
+            <RouterLink :to="{ name: 'personal.profile.index' }" class="header-navigation-list__link">
               Профиль
             </RouterLink>
           </li>
           <li class="header-navigation-list__item header-navigation-list__item--hide">
-            <RouterLink class="header-navigation-list__link" to="/post">Управление постами</RouterLink>
+            <RouterLink :to="{ name: 'personal.posts.index' }" class="header-navigation-list__link">Управление постами</RouterLink>
           </li>
           <li class="header-navigation-list__item">
             <button
