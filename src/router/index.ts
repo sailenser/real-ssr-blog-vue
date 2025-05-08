@@ -11,12 +11,16 @@ import Registration from '@/views/auth/Registration.vue';
 import Login from '@/views/auth/Login.vue';
 
 import Personal from '@/views/personal/Index.vue';
-import PersonalProfilePage from '@/views/personal/Profile.vue';
 
 import PersonalPostsBase from '@/views/personal/posts/Base.vue';
 import PersonalPostsCreatePage from '@/views/personal/posts/Create.vue';
 import PersonalPostsEditPage from '@/views/personal/posts/Edit.vue';
 import PersonalPostsIndexPage from '@/views/personal/posts/Index.vue';
+
+import PersonalProfileBase from '@/views/personal/profile/Base.vue';
+import PersonalProfileCreatePage from '@/views/personal/profile/Create.vue';
+import PersonalProfileEditPage from '@/views/personal/profile/Edit.vue';
+import PersonalProfileIndexPage from '@/views/personal/profile/Index.vue';
 
 import E404 from './../components/errors/E404.vue'
 
@@ -89,13 +93,9 @@ const routes: Array<RouteRecordRaw> = [
         component: Personal,
         children: [
             {
-                name: 'personal.profile',
-                path: '/profile',
-                component: PersonalProfilePage
-            },
-            {
-                path: '/post',
+                path: 'post',
                 component: PersonalPostsBase,
+                name: 'personal.posts.base',
                 children: [
                     {
                         name: 'personal.posts.index',
@@ -111,6 +111,28 @@ const routes: Array<RouteRecordRaw> = [
                         name: 'personal.posts.edit',
                         path: 'edit/:id',
                         component: PersonalPostsEditPage
+                    }
+                ]
+            },
+            {
+                path: 'profile',
+                component: PersonalProfileBase,
+                name: 'personal.profile.base',
+                children: [
+                    {
+                        name: 'personal.profile.index',
+                        path: '',
+                        component: PersonalProfileIndexPage
+                    },
+                    {
+                        name: 'personal.profile.create',
+                        path: 'create',
+                        component: PersonalProfileCreatePage
+                    },
+                    {
+                        name: 'personal.profile.edit',
+                        path: 'edit/:id',
+                        component: PersonalProfileEditPage
                     }
                 ]
             }

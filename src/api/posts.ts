@@ -1,7 +1,6 @@
 import type { AxiosInstance } from "axios";
 import type { CategoryPost, Post, PostsApi } from "./typesApi/typesPost.ts"
 import type { ApiResponse } from "./typesApi/types.ts"
-
 export default function createPostsApi(http: AxiosInstance): PostsApi {
     return {
         async all() {

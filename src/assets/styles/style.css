@@ -446,3 +446,11 @@ body {
     height: 30px;
     fill: currentColor;
 }
+
+.page-blog__info:last-child {
+    margin-top: 5px;
+}
+
+.page-blog__text:first-child {
+    margin-right: 3px;
+}

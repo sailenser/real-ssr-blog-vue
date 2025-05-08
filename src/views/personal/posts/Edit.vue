@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 import useApi from '@/composables/useApi'
 import useForm from '@/composables/useForm'

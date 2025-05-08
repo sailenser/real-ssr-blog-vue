@@ -26,10 +26,10 @@
           class="header-navigation-list header-navigation__list"
       >
         <li v-show="isMenuShow" class="header-navigation-list__item">
-          <RouterLink class="header-navigation-list__link" to="/">Главная</RouterLink>
+          <RouterLink :to="{ name: 'home' }" class="header-navigation-list__link">Главная</RouterLink>
         </li>
         <li class="header-navigation-list__item">
-          <RouterLink class="header-navigation-list__link" to="/about">Обо мне</RouterLink>
+          <RouterLink :to="{ name: 'about' }" class="header-navigation-list__link">Обо мне</RouterLink>
         </li>
         <li class="header-navigation-list__item">
           <RouterLink class="header-navigation-list__link" to="/blog">Блог</RouterLink>
@@ -48,7 +48,12 @@
             <RouterLink class="header-navigation-list__link" to="/lk">Личный кабинет</RouterLink>
           </li>
           <li class="header-navigation-list__item header-navigation-list__item--hide">
-            <RouterLink class="header-navigation-list__link" to="/profile">Профиль</RouterLink>
+            <RouterLink
+                :to="{ name: 'personal.profile.index' }"
+                class="header-navigation-list__link"
+            >
+              Профиль
+            </RouterLink>
           </li>
           <li class="header-navigation-list__item header-navigation-list__item--hide">
             <RouterLink class="header-navigation-list__link" to="/post">Управление постами</RouterLink>

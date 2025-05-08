@@ -6,6 +6,11 @@ export interface AuthApi {
     logout(id: number):Promise<ApiResponse<User>>;
 }
 
+export interface UsersApi {
+    update(user:User):Promise<ApiResponse<User>>;
+    one(id: number):Promise<User>;
+}
+
 // TODO: тут надо проработать с постоянно возвращемыми данными и не постоянно возвращаемыми, убрать лишние ?
 export type User = {
     id?: number;

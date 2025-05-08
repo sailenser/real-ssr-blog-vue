@@ -3,10 +3,20 @@
     <div class="page-content__wrapper">
       <div class="page-aside page-content__aside">
         <div>
-          <RouterLink class="page-aside__link" to="/profile">Профиль</RouterLink>
+          <RouterLink
+              :to="{ name: 'personal.profile.index' }"
+              class="page-aside__link"
+          >
+            Профиль
+          </RouterLink>
         </div>
         <div>
-          <RouterLink class="page-aside__link" to="/post">Управление постами</RouterLink>
+          <RouterLink
+              class="page-aside__link"
+              :to="{ name: 'personal.posts.index'}"
+          >
+            Управление постами
+          </RouterLink>
         </div>
       </div>
       <slot />
