@@ -11,8 +11,8 @@ export default function createPostsApi(http: AxiosInstance): PostsApi {
             const response: ApiResponse<Post> = await http.get(`/posts/${id}`);
             return response.data;
         },
-        async store({url, title, contents, category_id}) {
-            const reponse = await http.post(`/posts`, { url, title, contents, category_id });
+        async create({url, title, contents, description, category_id}) {
+            const reponse = await http.post(`/posts`, { url, title, contents, description, category_id });
             return reponse.data;
         },
         async update({id, url, title, contents}){

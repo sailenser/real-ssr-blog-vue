@@ -22,9 +22,21 @@
         </div>
 
         <div class="page-blog__box">
+          <label class="page-blog__label" for="title">Description Post:</label>
+          <div class="page-blog__error">{{ errors.description }}</div>
+          <input class="page-blog__input" v-model="dataForm.description" type="text" id="description" name="content" required placeholder="Введите description">
+        </div>
+
+        <div class="page-blog__box">
           <label class="page-blog__label" for="category_id">Category:</label>
           <div class="page-blog__error">{{ errors.category_id }}</div>
-          <input class="page-blog__input" v-model="dataForm.category_id" type="text" id="category_id" name="content" required placeholder="Введите номер категории">
+          <select class="page-blog__input" v-model="dataForm.category_id">
+            <option
+                v-for="category in sampleStore.category"
+                :value="category.id"
+                :key="category.id"
+            >{{category.name}}</option>
+          </select>
         </div>
       </div>
       <button
@@ -47,8 +59,11 @@ import { useRouter } from 'vue-router';
 import useApi from '@/composables/useApi'
 import useForm from '@/composables/useForm'
 import usePageInfo from '@/composables/usePageInfo';
+import useStore from "@/composables/useStore";
 
 const router = useRouter();
+const [ sampleStore ] = useStore('sample');
+
 usePageInfo('Создать Пост');
 
 const  { dataForm, errors, pending, send, externalError } = useForm({
@@ -56,9 +71,10 @@ const  { dataForm, errors, pending, send, externalError } = useForm({
     url: '',
     title: '',
     contents: '',
-    category_id: ''
+    description: '',
+    category_id: 1
   },
-  apiFn: useApi().posts.store,
+  apiFn: useApi().posts.create,
   onSuccess: post => {
     router.push({ name: 'blog.post', params: { id: post.data.id } })
   }

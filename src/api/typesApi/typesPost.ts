@@ -5,6 +5,7 @@ export type Post = {
     url: string;
     title: string;
     contents: string;
+    description: string;
     createdAt: string;
     updatedAt: string;
     user_id: number;
@@ -30,7 +31,7 @@ export type UserInfo = {
 export interface PostsApi {
     all():Promise<Post[]>;
     one(id: number):Promise<Post>;
-    store(post: Post):Promise<Post>;
+    create(post: Post):Promise<Post>;
     update(post: Post):Promise<Post>;
     remove(id: number):Promise<Post>;
     category():Promise<CategoryPost[]>;
