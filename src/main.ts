@@ -10,8 +10,8 @@ import initHttpAuthToken from './connectors/initHttpAuthToken';
 export default async function makeApp(context:any){
     const createRealApp = context.ssr ? createSSRApp : createApp;
     const app = createRealApp(App);
-    const http = createHttpPlugin('http://localhost:8876/api');
-    // const http = createHttpPlugin('https://api-blog-srr.fronterbest.ru/api');
+    // const http = createHttpPlugin('http://localhost:8876/api');
+    const http = createHttpPlugin('https://api-blog-srr.fronterbest.ru/api');
     const router = createRouter();
     const api = createApi(http);
     const pinia = createPinia();
