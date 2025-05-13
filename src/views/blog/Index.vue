@@ -47,7 +47,6 @@
   import useStore from '@/composables/useStore'
   import useApiRequest from '@/composables/useApiRequest'
   import usePageInfo from '@/composables/usePageInfo';
-  import { inject } from "vue";
 
   const api = useApi();
   const [ request, getAllPosts ] = useApiRequest('posts.all');
@@ -58,7 +57,6 @@
 
   async function removePost(id) {
     api.posts.remove(id);
-    await getAllPosts();
     document.location = '/blog';
   }
 </script>
