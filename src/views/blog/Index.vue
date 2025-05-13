@@ -43,20 +43,19 @@
 
 <script setup>
   import { RouterLink } from 'vue-router';
-  import useApi from '@/composables/useApi'
   import useStore from '@/composables/useStore'
   import useApiRequest from '@/composables/useApiRequest'
   import usePageInfo from '@/composables/usePageInfo';
 
-  const api = useApi();
   const [ request, getAllPosts ] = useApiRequest('posts.all');
+  const [ request2, deletePost ] = useApiRequest('posts.remove');
   const [ authStore ] = useStore('auth');
 
   usePageInfo('Блог');
   await getAllPosts();
 
   async function removePost(id) {
-    api.posts.remove(id);
+    await deletePost(id);
     document.location = '/blog';
   }
 </script>

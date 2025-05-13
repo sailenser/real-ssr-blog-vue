@@ -60,6 +60,7 @@
     const categoryId = sampleStore.getCategoryIdByUrl(urlParam);
     await getCategoryPosts(categoryId);
   };
+
   const { valid, result } = useRouteString('categoryUrl');
   const [ request, getCategoryPosts ] = useApiRequest('posts.categoryPosts');
 

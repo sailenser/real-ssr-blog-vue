@@ -1,5 +1,5 @@
-import { inject, ref, type Ref } from "vue";
 import useApi from "./useApi";
+import { inject, ref, type Ref } from "vue";
 import { getByDottedKey } from "../shared/object";
 
 interface ApiResult<T = any> {
@@ -16,6 +16,7 @@ export default function useApiRequest<T = any>(
     apiSchema: string
 ): [Ref<ApiResult<T>>, (...args: any[]) => Promise<void>] {
     const api = useApi();
+
     if (!api) {
         throw new Error("API is not available");
     }
