@@ -33,15 +33,10 @@
         <div class="page-blog__box">
           <label class="page-blog__label" for="email">Roles:</label>
           <div class="page-blog__error">{{errors.roles }}</div>
-          <input
-              class="page-blog__input"
-              v-model="dataForm.roles"
-              type="text"
-              id="roles"
-              name="roles"
-              required
-              placeholder="Выбор роли пользователя"
-          >
+          <select class="page-blog__input" v-model="dataForm.roles">
+            <option>admin</option>
+            <option>user</option>
+          </select>
         </div>
         <div class="page-blog__box">
           <label class="page-blog__label" for="password">Пароль:</label>
