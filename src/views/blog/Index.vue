@@ -56,9 +56,9 @@
   usePageInfo('Блог');
   await getAllPosts();
 
-  function removePost(id) {
+  async function removePost(id) {
     api.posts.remove(id);
-    const apiCache = inject("apicache", {});
+    await getAllPosts();
     document.location = '/blog';
   }
 </script>
